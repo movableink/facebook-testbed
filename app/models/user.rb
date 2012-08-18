@@ -20,4 +20,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def friends
+    @graph = Koala::Facebook::API.new(token)
+
+    @graph.get_connections("me", "friends")
+  end
+
 end

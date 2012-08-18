@@ -10,3 +10,5 @@ gem 'jquery-rails'
 gem "bootstrap-sass", ">= 2.0.4.0"
 gem "omniauth", ">= 1.1.0"
 gem "omniauth-facebook"
+gem "koala"
+
