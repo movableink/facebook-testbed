@@ -36,3 +36,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "bootstrap-sass", ">= 2.0.4.0"
+gem "omniauth", ">= 1.1.0"
+gem "omniauth-facebook"
