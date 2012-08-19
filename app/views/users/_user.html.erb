@@ -1,5 +1,7 @@
+<% display_only ||= false %>
+
 <div class="user clearfix">
-  <% if @product %>
+  <% if @product and not display_only %>
     <div class="actions" style="float: right; width: 80px; padding-top: 15px;">
     <% if user.products.include? @product %>
       <%= form_for user.purchases.where(:product_id => @product.id).first, :html => { :method => :delete } do |f| %>
@@ -18,7 +20,7 @@
   <%= image_tag "http://graph.facebook.com/#{user.uid}/picture?type=square", :style => "float: left;" -%>
   <div style="margin-left: 60px;">
     <p><b><%= user.name %></b></p>
-    <% if @product and user.friends_who_purchased(@product).present? %>
+    <% if @product and user.friends_who_purchased(@product).present? and not display_only %>
       <p><%= link_to "Capture page", movable_ink_product_url(@product, :user => user.uid) %> (<%= user.friends_who_purchased(@product).size %> friends)</p>
     <% end %>
   </div>

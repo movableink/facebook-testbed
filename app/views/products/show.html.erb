@@ -4,12 +4,6 @@
   <%= @product.description %>
 </p>
 
-<% if current_user %>
-  <p>
-    <%= link_to "Capture page", movable_ink_product_url(@product, :user => current_user.uid) %>
-  </p>
-<% end %>
-
 <div class="row">
   <div class="span12">
     <h2>People with friends who purchased</h2>
@@ -25,7 +19,9 @@
     <h3>Your Friends</h3>
 
     <div id="friends">
-      <%= render :partial => @friends %>
+      <% if current_user %>
+        <%= render :partial => current_user.friends_who_purchased(@product) %>
+      <% end %>
     </div>
   </div>
 
@@ -42,3 +38,8 @@
   </div>
 
 </div>
+
+<hr/>
+
+<%= link_to "Edit Product", edit_product_url(@product) %> |
+<%= link_to "Delete", @product, "data-confirm" => "Are you sure you want to delete this product?", :method => :delete %>
