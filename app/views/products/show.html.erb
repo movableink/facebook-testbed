@@ -39,7 +39,11 @@
 
 </div>
 
-<hr/>
+<% if current_user %>
 
-<%= link_to "Edit Product", edit_product_url(@product) %> |
-<%= link_to "Delete", @product, "data-confirm" => "Are you sure you want to delete this product?", :method => :delete %>
+  <hr/>
+
+  <%= link_to "Edit Product", edit_product_url(@product) %> |
+  <%= link_to "Delete", @product, "data-confirm" => "Are you sure you want to delete this product?", :method => :delete %>
+
+<% end %>

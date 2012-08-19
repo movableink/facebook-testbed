@@ -13,5 +13,13 @@
     <% @products.each do |product| %>
       <p><%= link_to product.name, product %></p>
     <% end %>
+
+    <% if current_user %>
+      <hr/>
+
+      <p>
+        <%= link_to "New Product", new_product_url %>
+      </p>
+    <% end %>
   </div>
 </div>
