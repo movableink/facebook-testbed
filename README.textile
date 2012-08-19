@@ -1,5 +1,9 @@
 h1. Movable Ink Facebook Testbed
 
+h2. Introduction
+
+This is a very rudimentary e-commerce site that serves as an example for how to integrate Movable Ink for social recommendations in email.  It contains Users who can purchase Products.  Each product has a capture page that can be rendered using a Movable Ink Web Crop.  The capture page takes a Facebook ID and shows which of that Facebook user's friends have "purchased" the product.
+
 h2. Getting Started
 
 First, create or use an existing app on Facebook. (http://developers.facebook.com)  Go into your app's Advanced Settings and enable 'Remove offline access permission'.  This will keep your auth tokens active for 60 days instead of 2 hours.
