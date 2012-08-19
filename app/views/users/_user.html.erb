@@ -1,0 +1,25 @@
+<div class="user clearfix">
+  <% if @product %>
+    <div class="actions" style="float: right; width: 80px; padding-top: 15px;">
+    <% if user.products.include? @product %>
+      <%= form_for user.purchases.where(:product_id => @product.id).first, :html => { :method => :delete } do |f| %>
+        <button>Return</button>
+      <% end %>
+    <% else %>
+      <%= form_for Purchase.new do |p| %>
+        <%= p.hidden_field :user_id, :value => user.uid %>
+        <%= p.hidden_field :product_id, :value => @product.id %>
+        <button>Purchase</button>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+
+  <%= image_tag "http://graph.facebook.com/#{user.uid}/picture?type=square", :style => "float: left;" -%>
+  <div style="margin-left: 60px;">
+    <p><b><%= user.name %></b></p>
+    <% if @product and user.friends_who_purchased(@product).present? %>
+      <p><%= link_to "Capture page", movable_ink_product_url(@product, :user => user.uid) %> (<%= user.friends_who_purchased(@product).size %> friends)</p>
+    <% end %>
+  </div>
+</div>

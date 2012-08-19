@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :email, :token
+  serialize :friends
 
   has_many :purchases, :primary_key => :uid
   has_many :products, :through => :purchases
@@ -20,10 +21,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def friends
+  def set_friends
     @graph = Koala::Facebook::API.new(token)
 
-    @graph.get_connections("me", "friends")
+    self.friends = @graph.get_connections("me", "friends")
+  end
+
+  def friends
+    attributes['friends'] || []
   end
 
   def friend_ids

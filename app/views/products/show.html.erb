@@ -14,13 +14,7 @@
   <div class="span12">
     <h2>People with friends who purchased</h2>
 
-    <% User.all.select{|u| u.friends_who_purchased(@product).size > 0 }.each do |user| %>
-      <div class="user">
-        <%= image_tag "http://graph.facebook.com/#{user.uid}/picture?type=square", :style => "float: left;" -%>
-        <p><%= user.name %></p>
-        <p><%= link_to "Capture page", movable_ink_product_url(@product, :user => user.uid) %></p>
-      </div>
-    <% end %>
+    <%= render :partial => User.all.select{|u| u.friends_who_purchased(@product).present? } %>
   </div>
 
   <div class="span12">
@@ -31,26 +25,20 @@
     <h3>Your Friends</h3>
 
     <div id="friends">
-      <% @friends.each do |friend| %>
-        <p><%= image_tag("http://graph.facebook.com/#{friend.uid}/picture?type=square") -%><%= friend.name %></p>
-      <% end %>
+      <%= render :partial => @friends %>
     </div>
   </div>
 
   <div class="span6">
     <h3>All</h3>
 
-    <% @product.users.each do |user| %>
-      <p><%= image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square") -%><%= user.name %></p>
-    <% end %>
+    <%= render :partial => @product.users %>
   </div>
 
   <div class="span12">
     <h2>Non-purchasers</h2>
 
-    <% (User.all - @product.users).each do |user| %>
-      <p><%= image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square") -%><%= user.name %></p>
-    <% end %>
+    <%= render :partial => User.all - @product.users %>
   </div>
 
 </div>

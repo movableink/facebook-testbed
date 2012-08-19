@@ -5,6 +5,7 @@ FacebookTestbed::Application.routes.draw do
   resources :products do
     member { get :movable_ink }
   end
+  resources :purchases
 
   match '/auth/:provider/callback' => 'sessions#create'
   match '/signin' => 'sessions#new', :as => :signin
