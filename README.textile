@@ -4,7 +4,7 @@ h2. Getting Started
 
 First, create or use an existing app on Facebook. (http://developers.facebook.com)  Go into your app's Advanced Settings and enable 'Remove offline access permission'.  This will keep your auth tokens active for 60 days instead of 2 hours.
 
-Next, in your shell, set your environment variables OMNIAUTH_FACEBOOK_KEY and OMNIAUTH_FACEBOOK_SECRET to your Facebook app credentials.  Alternatively, you can modify config/initializers/omniauth.rb to set the values directly.
+Next, in your shell, set your environment variables OMNIAUTH_PROVIDER_KEY and OMNIAUTH_PROVIDER_SECRET to your Facebook app credentials.  Alternatively, you can modify config/initializers/omniauth.rb to set the values directly.
 
 Then run `bin/rake db:migrate` to set up the database.
 
