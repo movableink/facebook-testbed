@@ -1,5 +1,8 @@
-<h1>Friends who purchased:</h1>
+<div id="friends_who_purchased" style="font-family: Helvetica, sans-serif; width: 300px; border: 1px solid #777;">
+  <h1 style="font-size: 14px; background-color: #EEE; padding: 10px; margin: 0; text-transform: uppercase;">Friends who purchased this deal:</h1>
 
-<div id="friends">
-  <%= render :partial => @friends, :locals => {:display_only => true} %>
+  <div id="friends" style="padding: 0 10px 10px;">
+    <%= render :partial => @friends, :locals => {:display_only => true} %>
+    <div style="clear: both;"></div>
+  </div>
 </div>
