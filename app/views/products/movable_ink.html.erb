@@ -1,0 +1,7 @@
+<h1>Friends who purchased:</h1>
+
+<div id="friends">
+<% @friends.each do |friend| %>
+  <p><%= image_tag("http://graph.facebook.com/#{friend.uid}/picture?type=square") -%><%= friend.name %></p>
+<% end %>
+</div>

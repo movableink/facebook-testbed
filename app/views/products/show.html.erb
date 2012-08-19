@@ -1,0 +1,30 @@
+<h1><%= @product.name %></h1>
+
+<p>
+  <%= @product.description %>
+</p>
+
+<p>
+  <%= link_to "Capture page", movable_ink_product_url(@product, :user => current_user.uid) %>
+</p>
+
+<div class="row">
+  <div class="span6">
+    <h2>Your Friends</h2>
+
+    <div id="friends">
+      <% @friends.each do |friend| %>
+        <p><%= image_tag("http://graph.facebook.com/#{friend.uid}/picture?type=square") -%><%= friend.name %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span6">
+    <h2>All Purchasers</h2>
+
+    <% @product.users.each do |user| %>
+      <p><%= image_tag("http://graph.facebook.com/#{user.uid}/picture?type=square") -%><%= user.name %></p>
+    <% end %>
+  </div>
+
+</div>

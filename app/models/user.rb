@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :email, :token
 
-  has_many :purchases
+  has_many :purchases, :primary_key => :uid
   has_many :products, :through => :purchases
 
   def self.create_with_omniauth(auth)
@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
     @graph = Koala::Facebook::API.new(token)
 
     @graph.get_connections("me", "friends")
+  end
+
+  def friend_ids
+    friends.map{|f| f['id'] }
+  end
+
+  def friends_who_purchased(product)
+    User.joins(:purchases).where(:purchases => { :product_id => product.id, :user_id => friend_ids})
   end
 
 end
