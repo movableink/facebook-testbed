@@ -1,64 +1,14 @@
-h1. Facebook Testbed
-
-This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.com/.
-
-h2. Diagnostics
-
-This application was built with recipes that are NOT known to work together.
-
-This application was built with preferences that are NOT known to work together.
-
-If the application doesn't work as expected, please "report an issue":https://github.com/RailsApps/rails_apps_composer/issues and include these diagnostics:
-
-We'd also like to know if you've found combinations of recipes or preferences that do work together.
-
-Recipes:
-["auth", "controllers", "core", "email", "extras", "frontend", "gems", "git", "init", "models", "railsapps", "readme", "routes", "setup", "testing", "views"]
-
-Preferences:
-{:git=>true, :railsapps=>"none", :dev_webserver=>"webrick", :database=>"sqlite", :templates=>"erb", :unit_test=>"test_unit", :integration=>"none", :fixtures=>"none", :frontend=>"bootstrap", :bootstrap=>"sass", :email=>"none", :authentication=>"omniauth", :omniauth_provider=>"facebook", :authorization=>"none", :starter_app=>"users_app"}
-
-h2. Ruby on Rails
-
-This application requires:
-
-* Ruby version 1.9.3
-* Rails version 3.2.7
-
-Learn more about "Installing Rails":http://railsapps.github.com/installing-rails.html.
-
-h2. Database
-
-This application uses SQLite with ActiveRecord.
-
-h2. Development
-
-* Template Engine: ERB
-* Testing Framework: Test::Unit
-* Front-end Framework: Twitter Bootstrap (Sass)
-* Form Builder: None
-* Authentication: OmniAuth
-* Authorization: None
-
-
-
-
+h1. Movable Ink Facebook Testbed
 
 h2. Getting Started
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+First, create or use an existing app on Facebook. (http://developers.facebook.com)  Go into your app's Advanced Settings and enable 'Remove offline access permission'.  This will keep your auth tokens active for 60 days instead of 2 hours.
 
-h2. Documentation and Support
+Next, in your shell, set your environment variables OMNIAUTH_FACEBOOK_KEY and OMNIAUTH_FACEBOOK_SECRET to your Facebook app credentials.  Alternatively, you can modify config/initializers/omniauth.rb to set the values directly.
 
-This is the only documentation.
+Then run `bin/rake db:migrate` to set up the database.
 
-h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Then run `bin/rails server` to start the server.  It should run on port 3000 by default.
 
 h2. Contributing
 
@@ -73,8 +23,8 @@ If you add functionality to this application, create an alternative implementati
 
 h2. Credits
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Built by Michael Nutt <michael@movableink.com> for Movable Ink.
 
 h2. License
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Licensed under the MIT License.
