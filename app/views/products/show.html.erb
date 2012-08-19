@@ -4,9 +4,11 @@
   <%= @product.description %>
 </p>
 
-<p>
-  <%= link_to "Capture page", movable_ink_product_url(@product, :user => current_user.uid) %>
-</p>
+<% if current_user %>
+  <p>
+    <%= link_to "Capture page", movable_ink_product_url(@product, :user => current_user.uid) %>
+  </p>
+<% end %>
 
 <div class="row">
   <div class="span6">

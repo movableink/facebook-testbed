@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find params[:id]
 
-    @friends = current_user.friends_who_purchased(@product)
+    if current_user
+      @friends = current_user.friends_who_purchased(@product)
+    else
+      @friends = []
+    end
   end
 
   def movable_ink
